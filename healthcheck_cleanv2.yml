@@ -27,7 +27,7 @@
     - host: "https://{{ url_api }}:6443"
       api_key: apikey
       verify_ssl: false
-     - namespaces:
+    - namespaces:
      - default
       tags: 
      - never
