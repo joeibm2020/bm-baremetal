@@ -20,8 +20,8 @@
    - never
    - ocpconnect
    
- tasks:
- - name: Authenticate with token, return all pods and services
+  tasks:
+  - name: Authenticate with token, return all pods and services
   - plugin: openshift
     connections:
     - host: https://{{ url_api }}:6443
