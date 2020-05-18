@@ -43,9 +43,9 @@
     command: oc get nodes | awk '{sum += $2 == "Ready"} END {print sum}'
     register: nrcc
   failed_when: nlc.rc != nrcc.rc or nlc.rc < 3 or nrcc.rc < 3
-   tags: 
-    - never
-    - pre-healthcheck
+ tags: 
+   - never
+   - pre-healthcheck
     
   block:
   - name: clusteroperators lines  
