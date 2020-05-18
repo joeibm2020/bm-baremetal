@@ -21,8 +21,8 @@
    - ocpconnect
 
   - name: Authenticate with token, and return all pods and services for all namespace
-    plugin: openshift
-    connections:
+   plugin: openshift
+   connections:
     - host: "https://{{ url_api }}:6443"
       api_key: apikey
       verify_ssl: false
