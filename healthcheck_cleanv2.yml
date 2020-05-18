@@ -24,7 +24,7 @@
   - name: Authenticate with token, return all pods and services
     plugin: openshift
  #   connections:
-    - host: "https://{{ url_api }}:6443"
+    - host: https://{{ url_api }}:6443
       api_key: apikey
       verify_ssl: false
     - namespaces:
