@@ -28,7 +28,7 @@
       api_key: apikey
       verify_ssl: false
      - namespaces:
-      - default
+     - default
       tags: 
      - never
      - ocpconnect
