@@ -20,7 +20,7 @@
    - never
    - ocpconnect
 
-  - name: Authenticate with token, and return all pods and services for all namespace
+  - name: Authenticate with token, return all pods and services
   plugin: openshift
   connections:
   - host: "https://{{ url_api }}:6443"
