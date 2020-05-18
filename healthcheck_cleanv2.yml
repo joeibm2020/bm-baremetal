@@ -28,7 +28,7 @@
       api_key: "{{ key_ocp }}"
       verify_ssl: false
     - namespaces:
-     - Default
+      Default
       tags: 
       - never
       - ocpconnect
