@@ -7,7 +7,7 @@
   any_errors_fatal: true
   max_fail_percentage: 0
   vars:
-    api_key: apikey
+    api_key: key_ocp
     IS_OK: OK
 
   tasks:
@@ -21,12 +21,12 @@
    - ocpconnect
    
   tasks:
-  - name: Authenticate with token, return all pods and services
-    plugin: openshift
-    connections:
-      - host: https://{{ url_api }}:6443
-        api_key: key_ocp
-        verify_ssl: false
+ - name: Authenticate with token, return all pods and services
+   plugin: openshift
+   connections:
+     - host: https://{{ url_api }}:6443
+       api_key: key_ocp
+       verify_ssl: false
      # - namespaces:
      #   - Default
   tags: 
