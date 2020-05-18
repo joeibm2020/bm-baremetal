@@ -14,9 +14,9 @@
   - name: get the api to connect to openshift , filter out api openshift and create variable
     command: cat /var/lib/dnsmasq/ocnet.addnhosts | grep api.us | awk '{print $3}'
     register: output_result
-   - set_fact: 
+  - set_fact: 
     url_api: "{{ output_result.stdout }}"
-  tags: 
+   tags: 
     - never
     - ocpconnect
 
