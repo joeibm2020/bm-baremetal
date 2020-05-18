@@ -49,6 +49,15 @@ block:
    register: cotc
  failed_when: colc.rc != cotc.rc or colc.rc < 5 or cotc.rc < 5
 
+#######################drain node###########
+   block:
+     -name: Node NotReady,SchedulingDisabled
+        command: oc adm cordon {{ nodename }}
+     -name: drain node   
+        oc adm drain {{ nodename }}--ignore-daemonsets --delete-local-data --force --grace-period=0
+     when: reboot_required
+
+
   ###############################patching step #############################
 
     tasks:
@@ -69,11 +78,6 @@ block:
         ignore_errors: true 
         register: reboot_required
 
-#######################drain node###########
-   tasks:
-     -name: stop schedule and drain node 
-        command: oc adm manage-node {{ nodename }} --schedulable=false; oc adm drain {{ nodename }}--ignore-daemonsets --delete-local-data --force --grace-period=0
-        when: reboot_required
 
 ###########################
     tasks:
@@ -97,4 +101,7 @@ block:
           net_ping:
           dest: host={{ nodename }}
           state: present
+          
+       -name: node Ready,Scheduling
+        command: oc adm uncordon {{ nodename }}
   
