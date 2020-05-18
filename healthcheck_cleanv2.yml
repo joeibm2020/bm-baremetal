@@ -61,12 +61,12 @@
 
 #######################
   task:
-    -name: drain node   
-        oc adm drain {{ nodename }}--ignore-daemonsets --delete-local-data --force --grace-period=0
+   - name: drain node   
+     command: oc adm drain {{ nodename }}--ignore-daemonsets --delete-local-data --force --grace-period=0
      when: reboot_required
-      tags:
-       - never
-       - healthcheck
+    tags:
+     - never
+     - healthcheck
 
   ###############################patching step #############################
 
