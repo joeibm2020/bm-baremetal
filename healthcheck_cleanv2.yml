@@ -20,7 +20,7 @@
    - never
    - ocpconnect
    
-  tasks:
+ tasks:
  - name: Authenticate with token, return all pods and services
   - plugin: openshift
     connections:
