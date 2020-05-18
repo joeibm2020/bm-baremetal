@@ -25,8 +25,8 @@
   - plugin: openshift
     connections:
     - host: https://{{ url_api }}:6443
-      api_key: key_ocp
-      verify_ssl: false
+        api_key: key_ocp
+        verify_ssl: false
      # - namespaces:
      #   - Default
   tags: 
