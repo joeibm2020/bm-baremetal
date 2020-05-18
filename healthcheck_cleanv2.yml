@@ -44,8 +44,8 @@
     register: nrcc
   failed_when: nlc.rc != nrcc.rc or nlc.rc < 3 or nrcc.rc < 3
  tags: 
-   - never
-   - pre-healthcheck
+  - never
+  - pre-healthcheck
     
   block:
   - name: clusteroperators lines  
