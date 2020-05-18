@@ -37,7 +37,7 @@
 
 - block:
   - name:  node lines count (nlc) 
-    command: 'oc get nodes | wc -l | awk '{print $1-1 " " $2}''
+    command: 'oc get nodes | wc -l | awk '{print $1-1 " " $2}'
     register: nlc
   - name:   node ready column count (nrcc)
     command: 'oc get nodes | awk '{sum += $2 == "Ready"} END {print sum}'
@@ -46,6 +46,7 @@
    tags: 
     - never
     - pre-healthcheck
+    
   block:
   - name: clusteroperators lines  
     command: 'oc get co | wc -l | awk '{print $1-1 " " $3}''
