@@ -35,7 +35,7 @@
 
   ############### list nodes and decision to skip####################
 
-block:
+- block:
   - name:  node lines count (nlc) 
     command: 'oc get nodes | wc -l | awk '{print $1-1 " " $2}''
     register: nlc
