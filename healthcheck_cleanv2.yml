@@ -61,35 +61,32 @@
 
 #######################
   task:
-   - name: drain node   
-     command: oc adm drain {{ nodename }}--ignore-daemonsets --delete-local-data --force --grace-period=0
-     when: reboot_required
+  - name: drain node   
+    command: oc adm drain {{ nodename }}--ignore-daemonsets --delete-local-data --force --grace-period=0
+    when: reboot_required
     tags:
-     - never
-     - healthcheck
+    - never
+    - healthcheck
 
   ###############################patching step #############################
 
-    block:
-      - name: Upgrade packages on the server
-        user: cioauto
-        become: true
-         yum:
-          name: kernel
-          #name="*" 
-          #for all packages
-          state: latest
-          #when: ansible_distribution =='Red Hat Enterprise Linux'
-        register: yum_update
-  
-      #this task is to check if kernel update ocurred and system needs reboot or not
-      - name: verify if reboot is required after kernel update
-        shell: if [ $(rpm -q --last kernel | awk 'NR==1 {print $1}') != kernel-$(uname -r) ]; then echo 'reboot_needed'; else echo 'Kernel is current'; fi
-        ignore_errors: true 
-        register: reboot_required
-      tags:
-       - never
-       - healthcheck
+- block:
+  - name: Upgrade packages on the server
+    user: cioauto
+    become: true
+    yum:
+    name: kernel
+    state: latest
+    #when: ansible_distribution =='Red Hat Enterprise Linux'
+    register: yum_update
+    #this task is to check if kernel update ocurred and system needs reboot or not
+  - name: verify if reboot is required after kernel update
+    shell: if [ $(rpm -q --last kernel | awk 'NR==1 {print $1}') != kernel-$(uname -r) ]; then echo 'reboot_needed'; else echo 'Kernel is current'; fi
+    ignore_errors: true 
+    register: reboot_required
+   tags:
+   - never
+   - healthcheck
 
 ###########################
     block:
