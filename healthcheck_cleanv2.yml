@@ -1,7 +1,7 @@
 ---
 
 - name: connect to bare metal
-   hosts: oc-us-south1-int1.1378303
+   host: oc-us-south1-int1.1378303
    user: cioauto
    become: true
    any_errors_fatal: true
