@@ -19,15 +19,16 @@
   tags: 
    - never
    - ocpconnect
-
+   
+  tasks:
   - name: Authenticate with token, return all pods and services
-  plugin: openshift
-  connections:
-  - host: "https://{{ url_api }}:6443"
-     api_key: apikey
-     verify_ssl: fals
+    plugin: openshift
+    connections:
+    - host: "https://{{ url_api }}:6443"
+       api_key: apikey
+       verify_ssl: fals
      - namespaces:
-       - default
+      - default
       tags: 
      - never
      - ocpconnect
