@@ -42,9 +42,9 @@ block:
     command: 'oc get nodes | awk '{sum += $2 == "Ready"} END {print sum}'
     register: nrcc
   failed_when: nlc.rc != nrcc.rc or nlc.rc < 3 or nrcc.rc < 3
-    tags: 
-     - never
-     - pre-healthcheck
+   tags: 
+    - never
+    - pre-healthcheck
   block:
   - name: clusteroperators lines  
     command: 'oc get co | wc -l | awk '{print $1-1 " " $3}''
@@ -53,9 +53,9 @@ block:
     command: 'oc get co | awk '{sum += $3 == "True"} END {print sum}''
     register: cotc
   failed_when: colc.rc != cotc.rc or colc.rc < 5 or cotc.rc < 5
-    tags: 
-     - never
-     - pre-healthcheck
+   tags: 
+    - never
+    - pre-healthcheck
 
 #######################
   task:
