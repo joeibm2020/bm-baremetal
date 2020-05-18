@@ -1,14 +1,14 @@
 ---
 
 - name: connect to bare metal
-   host: oc-us-south1-int1.1378303
-   user: cioauto
-   become: true
-   any_errors_fatal: true
-   max_fail_percentage: 0
-   vars:
-     api_key: apikey
-     IS_OK: OK
+  hosts: oc-us-south1-int2.1873039
+  user: cioauto
+  become: true
+  any_errors_fatal: true
+  max_fail_percentage: 0
+  vars:
+    api_key: apikey
+    IS_OK: OK
 
 task:
   - name: get the api to connect to openshift , filter out api openshift and create variable
