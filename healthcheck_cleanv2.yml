@@ -15,7 +15,7 @@
     command: cat /var/lib/dnsmasq/ocnet.addnhosts | grep api.us | awk '{print $3}'
     register: output_result
    - set_fact: 
-     url_api: "{{ output_result.stdout }}"
+    url_api: "{{ output_result.stdout }}"
   tags: 
     - never
     - ocpconnect
