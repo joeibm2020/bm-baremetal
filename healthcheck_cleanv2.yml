@@ -16,9 +16,9 @@
     register: output_result
   - set_fact: 
     url_api: "{{ output_result.stdout }}"
-   tags: 
-    - never
-    - ocpconnect
+  tags: 
+   - never
+   - ocpconnect
 
  - name: Authenticate with token, and return all pods and services for all namespace
     plugin: openshift
