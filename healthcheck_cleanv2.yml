@@ -29,7 +29,7 @@
       verify_ssl: false
     - namespaces:
       Default
-      tags: 
+     tags: 
       - never
       - ocpconnect
 
