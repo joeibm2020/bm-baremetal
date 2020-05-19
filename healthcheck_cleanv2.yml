@@ -28,8 +28,10 @@
       api_key: "{{ key_ocp }}"
       verify_ssl: false
     - namespaces:
-      Default
-
+      - awx 
+    tags: 
+    - never
+    - pre-healthcheck
 
 ############### list nodes and decision to skip####################
 
