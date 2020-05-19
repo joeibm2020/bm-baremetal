@@ -29,7 +29,7 @@
       verify_ssl: false
   - namespaces:
     newrelic 
-    tags: 
+   tags: 
     - never
     - pre-healthcheck
 
