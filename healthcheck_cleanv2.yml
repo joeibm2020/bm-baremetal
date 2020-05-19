@@ -29,9 +29,9 @@
       verify_ssl: false
   - namespaces:
     newrelic 
-   tags: 
-    - never
-    - pre-healthcheck
+  tags: 
+   - never
+   - pre-healthcheck
 
 ############### list nodes and decision to skip####################
 
