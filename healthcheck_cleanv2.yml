@@ -29,9 +29,7 @@
       verify_ssl: false
     - namespaces:
       Default
-      tags: 
-      - never
-      - ocpconnect
+
 
 ############### list nodes and decision to skip####################
 
