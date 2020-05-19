@@ -56,8 +56,8 @@
     register: cotc
   failed_when: colc.rc != cotc.rc or colc.rc < 5 or cotc.rc < 5
   tags: 
-  - never
-  - pre-healthcheck
+   - never
+   - pre-healthcheck
 
 #######################
   task:
