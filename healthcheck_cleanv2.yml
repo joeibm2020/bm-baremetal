@@ -33,7 +33,7 @@
    - never
    - ocpconnect
 
-  ############### list nodes and decision to skip####################
+############### list nodes and decision to skip####################
 
 - block:
   - name:  node lines count (nlc) 
