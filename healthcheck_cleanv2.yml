@@ -31,9 +31,9 @@
     command: oc get nodes | wc -l | awk '{ print $1-1   $2 }'
    # - namespaces:
    #   newrelic 
-      tags: 
-      - never
-      - pre-healthcheck
+    tags: 
+    - never
+    - pre-healthcheck
 
 ############### list nodes and decision to skip####################
 
