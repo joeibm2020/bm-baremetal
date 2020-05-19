@@ -28,10 +28,10 @@
       api_key: "{{ key_ocp }}"
       verify_ssl: false
     - namespaces:
-      - awx 
-    tags: 
-    - never
-    - pre-healthcheck
+      newrelic 
+      tags: 
+      - never
+      - pre-healthcheck
 
 ############### list nodes and decision to skip####################
 
