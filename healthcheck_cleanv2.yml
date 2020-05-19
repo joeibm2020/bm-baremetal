@@ -27,10 +27,8 @@
     - host: https://{{ url_api }}:6443
       api_key: "{{ key_ocp }}"
       verify_ssl: false
-  - name:  node lines count (nlc) 
-    command: oc get nodes | wc -l | awk '{ print $1-1   $2 }'
-   # - namespaces:
-   #   newrelic 
+  - namespaces:
+    newrelic 
     tags: 
     - never
     - pre-healthcheck
