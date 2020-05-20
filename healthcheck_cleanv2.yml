@@ -20,18 +20,18 @@
    - never
    - ocpconnect
    
-  tasks:
-  - name: Authenticate with token, return all pods and services
-  - plugin: openshift
-    connections:
-    - host: https://{{ url_api }}:6443
-      api_key: "{{ key_ocp }}"
-      verify_ssl: false
-  - namespaces:
-    newrelic: 
-  tags: 
-   - never
-   - pre-healthcheck
+#  tasks:
+# - name: Authenticate with token, return all pods and services
+#  - plugin: openshift
+#   connections:
+#    - host: https://{{ url_api }}:6443
+#      api_key: "{{ key_ocp }}"
+#      verify_ssl: false
+#  - namespaces:
+#    newrelic: 
+#  tags: 
+#   - never
+#   - pre-healthcheck
    
    ###new connection code###
    ## Authenticate with token, and return all pods and services for all namespaces
