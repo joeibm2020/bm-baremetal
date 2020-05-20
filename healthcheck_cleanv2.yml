@@ -32,6 +32,34 @@
   tags: 
    - never
    - pre-healthcheck
+   
+   ###new connection code###
+   ## Authenticate with token, and return all pods and services for all namespaces
+- hosts: localhost
+  module_defaults:
+    group/k8s:
+      host: https://{{ url_api }}:6443
+      ca_cert: ca.pem
+  tasks:
+  - block:
+    # It's good practice to store login credentials in a secure vault and not
+    # directly in playbooks.
+    - include_vars: k8s_passwords.yml
+    - name: Log in (obtain access token)
+      k8s_auth:
+        username: cioadmin
+        password: "{{ k8s_admin_password }}"
+      register: k8s_auth_results
+
+ - name: Get a list of all pods from any namespace
+      k8s_info:
+        api_key: "{{ output_result.stdout.k8s_auth.api_key }}"
+        kind: Pod
+      register: pod_list
+    tags: 
+    - never
+    - ocpconnect
+    
 
 ############### list nodes and decision to skip####################
 
