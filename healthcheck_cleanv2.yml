@@ -6,8 +6,8 @@
   become: true
   any_errors_fatal: true
   max_fail_percentage: 0
-  vars_files:
-    - vault-pass.yml
+ # vars_files:
+  #  - vault-pass.yml
 
   tasks:
   - name: get the api to connect to openshift and filter out api openshift and create variable
