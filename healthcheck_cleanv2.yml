@@ -7,7 +7,7 @@
   any_errors_fatal: true
   max_fail_percentage: 0
   vars:
-    api_key: key_ocp
+    token: token_ocp
     IS_OK: OK
 
   tasks:
@@ -20,21 +20,42 @@
    - never
    - ocpconnect
    
-
+- hosts: localhost
+  tasks:
+    - name: pull pods
+      uri:
+        url: https://{{ url_api }}:6443/api/v1/pods
+        method: GET
+        return_content: yes
+        validate_certs: no
+        headers:
+            Authorization: Bearer {{ token }}
+   tags:
+    - never
+    - ocpconnect
 
 ############### list nodes and decision to skip####################
 
-- block:
-  - name:  node lines count (nlc) 
-    command: oc get nodes | wc -l | awk '{ print $1-1   $2 }'
-    register: nlc
-  - name:   node ready column count (nrcc)
-    command: oc get nodes | awk '{sum += $2 == "Ready"} END {print sum}'
-    register: nrcc
-  failed_when: nlc.rc != nrcc.rc or nlc.rc < 3 or nrcc.rc < 3
-  tags: 
-  - never
-  - pre-healthcheck
+curl -s "https://api.us-south1-int.ciocloud.nonprod.intranet.ibm.com:6443/api/v1/nodes" -k -H "Authorization: Bearer $(cat ./token)" | jq --sort-keys '.items[] | select(.metadata.name != null)| .metadata.name'
+
+
+
+curl -s "https://api.us-south1-int.ciocloud.nonprod.intranet.ibm.com:6443/api/v1/nodes" -k -H "Authorization: Bearer $(cat ./token)" | jq --sort-keys '.items[] | select(.metadata.name != null)| .status.conditions[] | select(.type == "Ready") | select (.status == "True") | .status '| wc -l
+
+
+
+
+#- block:
+ # - name:  node lines count (nlc) 
+ #   command: oc get nodes | wc -l | awk '{ print $1-1   $2 }'
+ #   register: nlc
+ # - name:   node ready column count (nrcc)
+ #   command: oc get nodes | awk '{sum += $2 == "Ready"} END {print sum}'
+ #   register: nrcc
+ # failed_when: nlc.rc != nrcc.rc or nlc.rc < 3 or nrcc.rc < 3
+ # tags: 
+ # - never
+ # - pre-healthcheck
     
 - block:
   - name: clusteroperators lines  
