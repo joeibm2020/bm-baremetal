@@ -38,6 +38,22 @@
 
 ############### list nodes and decision to skip####################
 
+- hosts: localhost
+  tasks:
+    - name: pull pods
+      uri:
+        url: https://{{ url_api }}:6443/api/v1/nodes
+        method: GET
+        return_content: yes
+        validate_certs: no
+        headers:
+            Authorization: Bearer {{ token }}
+   tags:
+    - never
+    - ocpconnect
+    
+    
+
 curl -s "https://api.us-south1-int.ciocloud.nonprod.intranet.ibm.com:6443/api/v1/nodes" -k -H "Authorization: Bearer $(cat ./token)" | jq --sort-keys '.items[] | select(.metadata.name != null)| .metadata.name'
 
 
