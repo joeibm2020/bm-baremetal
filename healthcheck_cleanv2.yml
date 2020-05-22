@@ -6,6 +6,9 @@
   become: true
   any_errors_fatal: true
   max_fail_percentage: 0
+  vars:
+    token: int_ocp: "{{ lookup('env','int_ocp') }}"
+   #token: int_ocp
  # vars_files:
   #  - vault-pass.yml
 
