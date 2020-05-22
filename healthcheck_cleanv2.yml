@@ -32,9 +32,9 @@
         validate_certs: no
         headers:
             Authorization: Bearer {{ token }}
-   tags:
-    - never
-    - ocpconnect
+  tags:
+   - never
+   - ocpconnect
 
 ############### list nodes and decision to skip####################
 
